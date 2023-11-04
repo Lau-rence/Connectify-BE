@@ -1,14 +1,22 @@
 require('dotenv').config();
-const express = require('express');
 
+const express = require('express');
+//routers
+const posts = require('./routes/posts');
+
+//express app
 const app = express();
 
-const PORT = process.env.PORT;
-
-app.get('/', (req, res)=>{
-    res.send('Connectify')
+//middleware
+app.use(express.json());
+app.use((req, res, next)=>{
+    console.log(req.path, req.method);
+    next();
 });
 
-app.listen(PORT, ()=>{
-    console.log(`Listening to port ${PORT}`);
+//routes
+app.use('/api/posts',posts);
+
+app.listen(process.env.PORT, ()=>{
+    console.log(`Listening to port ${process.env.PORT}`);
 });
