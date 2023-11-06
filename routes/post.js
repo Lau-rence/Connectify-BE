@@ -1,5 +1,7 @@
 const express = require('express');
 
+const create = require('../controllers/createPost')
+
 const router = express.Router();
 
 //Get all posts
@@ -13,9 +15,8 @@ router.get('/:id', (req, res)=>{
 });
 
 //Post posts
-router.post('/', (req, res)=>{
-    res.send({message: 'Insert posts!'});
-});
+router.post('/', create.createPost);
+
 //delete post
 router.delete('/:id', (req, res)=>{
     res.send({message: 'Delete a posts!'});
