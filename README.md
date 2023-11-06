@@ -5,4 +5,4 @@ Tech used:
 - Express
 - MongoDB
 
-Not yet done.
+The server of the connectify app
